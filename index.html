@@ -1,0 +1,30 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Weather app</title>
+    <meta name="description" content="The weather in my city">
+    <meta name="author" content="raphaelchalicarne">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <input id="city_input" type="text" placeholder="Enter your city name...">
+    <button id="get_weather" type="button">🌤️</button>
+    <div id="map" style="display: none;">
+        <h1 id="city_name_flag"></h1>
+        <h2 id="temp_sun"></h2>
+        <h2 id="pressure"></h2>
+    </div>
+    <script src="js/flag-emojis-by-code.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
