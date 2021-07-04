@@ -1,23 +1,13 @@
 import { request } from "@octokit/request";
+import { getPicture } from "./picture.js";
+
 const open_weather_app_api_key = await request('GET /repos/{owner}/{repo}/actions/secrets/{secret_name}', {
     owner: 'raphaelchalicarne',
     repo: 'weather-app',
     secret_name: 'OPEN_WEATHER_MAP_API_KEY'
 });
 
-$(document).ready(async function () {
-    let tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    let tz_array = tz.split('/');
-    let city_tz_user = tz_array[1];
-    await getWeather(city_tz_user);
-});
-
-$('#get_weather').click(async function () {
-    let city_name = $('#city_input').val();
-    await getWeather(city_name);
-});
-
-async function getWeather(city_name) {
+export async function getWeather(city_name) {
     let promise_weather = fetch('https://api.openweathermap.org/data/2.5/find?q=' + city_name + '&units=metric&appid=' + open_weather_app_api_key)
         .then(response => {
             if (!response.ok) {
@@ -44,6 +34,6 @@ async function getWeather(city_name) {
             getPicture(city_name);
             $('#map').show();
         })
-        .catch(error => console.log('The city was not found'));
+        .catch(_error => console.log('The city was not found'));
     await promise_weather;
 }

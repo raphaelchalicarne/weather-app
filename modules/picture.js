@@ -1,4 +1,4 @@
-async function getPicture(city_name) {
+export async function getPicture(city_name) {
     city_name = city_name.toLowerCase().trim();
     let promise_pic = fetch('https://api.teleport.org/api/urban_areas/slug:' + city_name + '/images/')
         .then(response => {
@@ -16,4 +16,4 @@ async function getPicture(city_name) {
             $('html').attr('style', '');
         });
     await promise_pic;
-}
+};
