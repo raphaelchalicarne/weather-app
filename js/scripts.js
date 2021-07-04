@@ -1,4 +1,4 @@
-var api_key = config.API_KEY;
+var open_weather_app_api_key = config.OPEN_WEATHER_MAP_API_KEY;
 
 $(document).ready(async function () {
     let tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -13,7 +13,7 @@ $('#get_weather').click(async function () {
 });
 
 async function getWeather(city_name) {
-    let promise_weather = fetch('https://api.openweathermap.org/data/2.5/find?q=' + city_name + '&units=metric&appid=' + api_key)
+    let promise_weather = fetch('https://api.openweathermap.org/data/2.5/find?q=' + city_name + '&units=metric&appid=' + open_weather_app_api_key)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
