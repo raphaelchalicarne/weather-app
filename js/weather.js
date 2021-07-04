@@ -1,4 +1,9 @@
-var open_weather_app_api_key = config.OPEN_WEATHER_MAP_API_KEY;
+import { request } from "@octokit/request";
+const open_weather_app_api_key = await request('GET /repos/{owner}/{repo}/actions/secrets/{secret_name}', {
+    owner: 'raphaelchalicarne',
+    repo: 'weather-app',
+    secret_name: 'OPEN_WEATHER_MAP_API_KEY'
+});
 
 $(document).ready(async function () {
     let tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -41,24 +46,4 @@ async function getWeather(city_name) {
         })
         .catch(error => console.log('The city was not found'));
     await promise_weather;
-}
-
-async function getPicture(city_name) {
-    city_name = city_name.toLowerCase().trim();
-    let promise_pic = fetch('https://api.teleport.org/api/urban_areas/slug:' + city_name + '/images/')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data);
-            let mobile_url = data.photos[0].image.mobile;
-            $('html').attr('style', 'background:url(' + mobile_url + ') no-repeat center center fixed; background-size:cover;');
-        })
-        .catch(error => {
-            $('html').attr('style', '');
-        });
-    await promise_pic;
 }
