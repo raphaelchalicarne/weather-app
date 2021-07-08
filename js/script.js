@@ -7,7 +7,12 @@ $(document).ready(async function () {
     await getWeather(city_tz_user);
 });
 
-$('#get_weather').click(async function () {
+$('#get_weather').click(calculateWeather);
+$('#city_input').keypress((e) => {
+    if (e.keyCode == 13) { calculateWeather() }
+});
+
+async function calculateWeather() {
     let city_name = $('#city_input').val();
     await getWeather(city_name);
-});
+};
