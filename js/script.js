@@ -1,4 +1,4 @@
-import { getWeather } from "./modules/weather.js";
+import { calculateWeather, getWeather } from "./modules/weather.js";
 
 $(document).ready(async function () {
     let tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -11,8 +11,3 @@ $('#get_weather').click(calculateWeather);
 $('#city_input').keypress((e) => {
     if (e.keyCode == 13) { calculateWeather() }
 });
-
-async function calculateWeather() {
-    let city_name = $('#city_input').val();
-    await getWeather(city_name);
-};

@@ -4,6 +4,11 @@ import { getPicture } from "./picture.js";
 
 var open_weather_map_api_key = config.OPEN_WEATHER_MAP_API_KEY;
 
+export async function calculateWeather() {
+    let city_name = $('#city_input').val();
+    await getWeather(city_name);
+};
+
 export async function getWeather(city_name) {
     let promise_weather = fetch('https://api.openweathermap.org/data/2.5/find?q=' + city_name + '&units=metric&appid=' + open_weather_map_api_key)
         .then(response => {
