@@ -1,20 +1,3 @@
 body {
     font-family: 'Mukta', sans-serif;
 }
-
-#map {
-    background-color: white;
-    width: 20%;
-    min-width: 200px;
-    padding: 10px 15px;
-    margin: 20px 10px;
-    border-radius: 7px;
-}
-
-#map *:first-child {
-    margin-top: 0;
-}
-
-#map *:last-child{
-    margin-bottom: 0;
-}
