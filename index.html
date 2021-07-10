@@ -20,11 +20,11 @@
 <body class="bg-transparent">
     <nav class="navbar navbar-default d-none">
         <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">Weather App</a>
-          </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Weather App</a>
+            </div>
         </div>
-      </nav>
+    </nav>
     <div class="container-sm mt-3 mb-3 d-flex flex-row justify-content-center">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="City" aria-label="City"
@@ -32,11 +32,33 @@
             <button class="btn btn-outline-secondary bg-light" type="button" id="get_weather_button">🌤️</button>
         </div>
     </div>
-    <div id="map" class="card m-3" style="width: 18rem;display: none;">
-        <div class="card-body">
-            <h1 id="city_name_flag" class="card-title"></h1>
-            <h2 id="temp_sun" class="card-text"></h2>
-            <h4 id="pressure" class="card-text"></h4>
+    <div class="container-sm m-3">
+        <div class="row">
+            <div class="col-lg-4 mb-3">
+                <div id="map" class="card invisible">
+                    <div class="card-body">
+                        <h1 id="city_name_flag" class="card-title"></h1>
+                        <h2 id="temp_sun" class="card-text"></h2>
+                        <h4 id="pressure" class="card-text"></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="weather" class="card invisible">
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-9">
+                                    <h1 id="weather_main" class="card-title"></h1>
+                                </div>
+                                <div class="col-3">
+                                    <img id="weather_icon" src="..." class="img-fluid" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

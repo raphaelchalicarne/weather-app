@@ -8,7 +8,6 @@ export async function getPicture(city_name) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
             let mobile_url = data.photos[0].image.mobile;
             $('html').attr('style', 'background:url(' + mobile_url + ') no-repeat center center fixed; background-size:cover;');
         })
