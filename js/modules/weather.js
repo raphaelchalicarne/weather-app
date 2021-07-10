@@ -22,19 +22,28 @@ export async function getWeather(city_name) {
         .then(data => data.list[0])
         .then(function (weather_data) {
             console.log(weather_data);
-
             let city_name = getWeatherCityName(weather_data);
             let country_code = weather_data.sys.country;
             $('#city_name_flag').text(formatCityName(city_name, country_code));
-            
+
             let temp = weather_data.main.temp;
             $('#temp_sun').text(formatCelcius(temp));
 
             let pressure = weather_data.main.pressure;
             $('#pressure').text('Pressure : ' + pressure + ' hPa');
-            
+
+            let weather_main = weather_data.weather[0].main;
+            $('#weather_main').text(weather_main);
+
+            let weather_description = weather_data.weather[0].description;
+            $('#weather_description').text(weather_description);
+
+            let weather_icon_id = weather_data.weather[0].icon;
+            let weather_icon_src = 'http://openweathermap.org/img/wn/' + weather_icon_id + '@2x.png';
+            $('#weather_icon').attr({ src: weather_icon_src, alt: weather_description });
+
             getPicture(city_name);
-            $('#map').removeClass('invisible');
+            $('#map, #weather').removeClass('invisible');
         })
         .catch(error => console.log('The city was not found'));
     await promise_weather;
