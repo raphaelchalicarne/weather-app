@@ -7,7 +7,7 @@ $(document).ready(async function () {
     await getWeather(city_tz_user);
 });
 
-$('#get_weather').click(calculateWeather);
+$('#get_weather_button').click(calculateWeather);
 $('#city_input').keypress((e) => {
     if (e.keyCode == 13) { calculateWeather() }
 });
