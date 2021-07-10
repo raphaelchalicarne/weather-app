@@ -2,7 +2,7 @@ import { config } from "../const/config.js";
 import { countries } from "../const/flag-emojis-by-code.js";
 import { getPicture } from "./picture.js";
 
-var open_weather_map_api_key = config.OPEN_WEATHER_MAP_API_KEY;
+var OPEN_WEATHER_MAP_API_KEY = config.OPEN_WEATHER_MAP_API_KEY;
 
 export async function calculateWeather() {
     let city_name = $('#city_input').val();
@@ -10,7 +10,9 @@ export async function calculateWeather() {
 };
 
 export async function getWeather(city_name) {
-    let promise_weather = fetch('https://api.openweathermap.org/data/2.5/find?q=' + city_name + '&units=metric&appid=' + open_weather_map_api_key)
+    let request_url = 'https://api.openweathermap.org/data/2.5/find?q=' + city_name + '&units=metric&appid=' + OPEN_WEATHER_MAP_API_KEY;
+
+    let promise_weather = fetch(request_url)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
