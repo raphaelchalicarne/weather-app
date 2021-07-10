@@ -21,12 +21,7 @@ export async function getWeather(city_name) {
         .then(function (weather_data) {
             console.log(weather_data);
 
-            // Get proper name
-            let city_name = weather_data.name;
-            let re = /^Arrondissement de/;
-            let array_test = city_name.split(re);
-            city_name = array_test[array_test.length - 1];
-
+            let city_name = getWeatherCityName(weather_data);
             let country_emoji = countries[weather_data.sys.country].emoji;
             $('#city_name_flag').text(city_name + ' ' + country_emoji);
             let temp = weather_data.main.temp;
@@ -38,4 +33,11 @@ export async function getWeather(city_name) {
         })
         .catch(error => console.log('The city was not found'));
     await promise_weather;
+}
+
+function getWeatherCityName(weather_data) {
+    let city_name = weather_data.name;
+    let re = /^Arrondissement de/;
+    let array_test = city_name.split(re);
+    return array_test[array_test.length - 1];
 }
