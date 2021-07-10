@@ -21,7 +21,6 @@ export async function getWeather(city_name) {
         })
         .then(data => data.list[0])
         .then(function (weather_data) {
-            console.log(weather_data);
             let city_name = getWeatherCityName(weather_data);
             let country_code = weather_data.sys.country;
             $('#city_name_flag').text(formatCityName(city_name, country_code));
