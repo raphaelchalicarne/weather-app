@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Weather app</title>
+    <title>Weather App</title>
     <meta name="description" content="The weather in my city">
     <meta name="author" content="raphaelchalicarne">
 
@@ -17,15 +17,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
-<body>
-    <div class="container-lg">
+<body class="bg-transparent">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Weather App</a>
+          </div>
+        </div>
+      </nav>
+    <div class="container-lg m-3">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="City" aria-label="City"
                 aria-describedby="get_weather_button" id="city_input">
-            <button class="btn btn-outline-secondary" type="button" id="get_weather_button">🌤️</button>
+            <button class="btn btn-outline-secondary bg-light" type="button" id="get_weather_button">🌤️</button>
         </div>
     </div>
-    <div id="map" class="card" style="width: 18rem;display: none;">
+    <div id="map" class="card m-3" style="width: 18rem;display: none;">
         <div class="card-body">
             <h1 id="city_name_flag" class="card-title"></h1>
             <h2 id="temp_sun" class="card-text"></h2>
