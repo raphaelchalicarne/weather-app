@@ -1,5 +1,5 @@
 import { config } from "../const/config.js";
-import { countries } from "../const/flag-emojis-by-code.js";
+import { formatCityName, formatCelcius } from "./format.js";
 import { getPicture } from "./picture.js";
 
 var OPEN_WEATHER_MAP_API_KEY = config.OPEN_WEATHER_MAP_API_KEY;
@@ -24,12 +24,15 @@ export async function getWeather(city_name) {
             console.log(weather_data);
 
             let city_name = getWeatherCityName(weather_data);
-            let country_emoji = countries[weather_data.sys.country].emoji;
-            $('#city_name_flag').text(city_name + ' ' + country_emoji);
+            let country_code = weather_data.sys.country;
+            $('#city_name_flag').text(formatCityName(city_name, country_code));
+            
             let temp = weather_data.main.temp;
-            $('#temp_sun').text(temp + '°C');
+            $('#temp_sun').text(formatCelcius(temp));
+
             let pressure = weather_data.main.pressure;
             $('#pressure').text('Pressure : ' + pressure + ' hPa');
+            
             getPicture(city_name);
             $('#map').removeClass('invisible');
         })
