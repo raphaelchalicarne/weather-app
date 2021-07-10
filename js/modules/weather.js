@@ -29,7 +29,7 @@ export async function getWeather(city_name) {
             let pressure = weather_data.main.pressure;
             $('#pressure').text('Pressure : ' + pressure + ' hPa');
             getPicture(city_name);
-            $('#map').show();
+            $('#map').removeClass('invisible');
         })
         .catch(error => console.log('The city was not found'));
     await promise_weather;
