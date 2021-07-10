@@ -35,11 +35,9 @@ export async function getWeather(city_name) {
             let weather_main = weather_data.weather[0].main;
             $('#weather_main').text(weather_main);
 
-            let weather_description = weather_data.weather[0].description;
-            $('#weather_description').text(weather_description);
-
             let weather_icon_id = weather_data.weather[0].icon;
             let weather_icon_src = 'http://openweathermap.org/img/wn/' + weather_icon_id + '@2x.png';
+            let weather_description = weather_data.weather[0].description;
             $('#weather_icon').attr({ src: weather_icon_src, alt: weather_description });
 
             getPicture(city_name);
