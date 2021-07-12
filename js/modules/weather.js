@@ -35,7 +35,7 @@ export async function getWeather(city_name) {
             $('#weather_main').text(weather_main);
 
             let weather_icon_id = weather_data.weather[0].icon;
-            let weather_icon_src = '/assets/weather-icons/' + weather_icon_id + '.png';
+            let weather_icon_src = './assets/weather-icons/' + weather_icon_id + '.png';
             let weather_description = weather_data.weather[0].description;
             $('#weather_icon').attr({ src: weather_icon_src, alt: weather_description });
 
