@@ -13,7 +13,8 @@ export async function getPicture(city_name) {
             return response.json();
         })
         .then(function (data) {
-            let photo_url = data.included[0].attributes.image.full;
+            let city_image = data.included[0].attributes.image;
+            let photo_url = window.innerWidth > 1000 ? city_image.full : city_image.large;
             $('html').attr('style', 'background:url(' + photo_url + ') no-repeat center center fixed; background-size:cover;');
         })
         .catch(error => {
