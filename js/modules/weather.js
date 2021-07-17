@@ -31,6 +31,9 @@ export async function getWeather(city_name) {
             let pressure = weather_data.main.pressure;
             $('#pressure').text('Pressure : ' + pressure + ' hPa');
 
+            let humidity = weather_data.main.humidity;
+            $('#humidity').text('Humidity : ' + humidity + ' %').attr({ style: 'width: ' + humidity + '%;' });
+
             let weather_main = weather_data.weather[0].main;
             $('#weather_main').text(weather_main);
 
