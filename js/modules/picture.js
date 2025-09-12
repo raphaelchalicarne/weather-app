@@ -13,12 +13,18 @@ export async function getPicture(city_name) {
             return response.json();
         })
         .then((data) => {
-            let city_image = data.results[0].urls;
+            let first_result = data.results[0]
+            let city_image = first_result.urls;
             let photo_url = window.innerWidth > 1000 ? city_image.full : city_image.regular;
             $('html').attr('style', 'background:url(' + photo_url + ') no-repeat center center fixed; background-size:cover;');
+            $('footer').show();
+            $('#picture_author')
+                .text(first_result.user.name)
+                .attr("href", first_result.user.links.html + "?utm_source=Weather_app&utm_medium=referral");
         })
         .catch(error => {
             $('html').attr('style', '');
+            $('footer').hide();
         });
     await promise_pic;
 }
